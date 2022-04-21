@@ -16,7 +16,12 @@ const graphql_1 = require("@nestjs/graphql");
 const apollo_1 = require("@nestjs/apollo");
 const node_path_1 = __importDefault(require("node:path"));
 const database_module_1 = require("../database/database.module");
-const test_resolver_1 = require("./test.resolver");
+const products_resolver_1 = require("./graphql/resolvers/products.resolver");
+const products_service_1 = require("../services/products.service");
+const puschases_resolver_1 = require("./graphql/resolvers/puschases.resolver");
+const purchases_service_1 = require("../services/purchases.service");
+const customers_service_1 = require("../services/customers.service");
+const customer_resolver_1 = require("./graphql/resolvers/customer.resolver");
 let HttpModule = class HttpModule {
 };
 HttpModule = __decorate([
@@ -29,7 +34,7 @@ HttpModule = __decorate([
                 autoSchemaFile: node_path_1.default.resolve(process.cwd(), 'src/schema.gql'),
             }),
         ],
-        providers: [test_resolver_1.TestResolver]
+        providers: [products_resolver_1.ProductsResolver, products_service_1.ProductsService, puschases_resolver_1.PurchaseResolver, purchases_service_1.PurchaseService, customers_service_1.CustomersService, customer_resolver_1.CustomersResolver]
     })
 ], HttpModule);
 exports.HttpModule = HttpModule;
